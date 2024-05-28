@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.maretvaabel.restapi</groupId>
-	<artifactId>SpringBootRestApiNextjsProject</artifactId>
+	<artifactId>SpringBootRestApiProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBootRestApiNextjsProject</name>
+	<name>SpringBootRestApiProject</name>
 	<description>SpringBoot and NextJs project for movies</description>
 	<properties>
 		<java.version>17</java.version>
