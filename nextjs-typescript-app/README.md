@@ -1,4 +1,6 @@
-This is a Next.js TypeScript App
+This is a Next.js (v "14.1.4") TypeScript App
+
+Expected Node version ">=18.17.0".
 
 ## Getting Started
 

@@ -1,0 +1,12 @@
+@import 'styles/variables';
+
+.container {
+  width: 100%;
+  max-width: $medium_desktop;
+  margin: 0 auto;
+  padding: 60px 100px;
+
+  @media (max-width: $tablet) {
+    padding: 60px 35px;
+  }
+}
