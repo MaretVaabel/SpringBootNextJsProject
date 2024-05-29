@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-form": "^0.0.3",
+    "ahooks": "^3.8.0",
+    "classnames": "^2.5.1",
+    "lodash": "^4.17.21",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.5",
     "sass": "^1.74.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
