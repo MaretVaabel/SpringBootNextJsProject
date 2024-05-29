@@ -6,14 +6,24 @@ import jakarta.persistence.*;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long EIDR;
+    @Column(name="EIDR", unique = true)
+    private int id;
     private String name;
-    public String Category;
+    private String category;
     private float rate;
     private int year;
     private String state;
 
+
     public Movie() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getState() {
@@ -33,11 +43,11 @@ public class Movie {
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     public float getRate() {
@@ -57,11 +67,4 @@ public class Movie {
         this.name = name;
     }
 
-    public long getEIDR() {
-        return EIDR;
-    }
-
-    public void setEIDR(long EIDR) {
-        this.EIDR = EIDR;
-    }
 }
