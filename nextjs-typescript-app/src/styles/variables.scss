@@ -10,12 +10,16 @@ $color-primary: #aa93ff;
 $color-primary-hover: #bba8ff;
 
 $color-secondary: #f0f0ea;
+$color-secondary-hover: #f3f3f3;
+
 $color-text-dark: #21093a;
+$color-text: #4d4f5d;
 
 $color-disabled: #dedede;
 $color-text-gray: #9c9c9c;
 $color-input-disabled: #fbfaf9;
 
+$color-dark: #191919;
 $color-text-dark-gray: #606060;
 $color-dark-gary: #1c1b1f;
 $color-background-yellow: #d9d4a7;
@@ -28,6 +32,9 @@ $color-white: #ffffff;
 $color-gray: #667085;
 $color-black: #000000;
 
+$color-border: #d2d3d8;
+$color-border-secondary: #5d6071;
+
 $color-gary-border: rgba(33, 9, 58, 0.15);
 $color-background-modal: rgba(0, 0, 0, 0.5);
 
@@ -35,3 +42,4 @@ $color-background-modal: rgba(0, 0, 0, 0.5);
 
 $mobile: 599px;
 $tablet: 899px;
+$medium_desktop: 1440px;
