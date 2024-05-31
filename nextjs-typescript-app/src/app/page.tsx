@@ -1,14 +1,12 @@
-'use client'
-import DataTable from 'components/molecules/DataTable/DataTable'
-import { getAllMovies } from 'app/api/actions'
+import MoviesForm from 'components/molecules/MoviesForm/MoviesForm'
+import { MovieType, getAllMovies } from './api/actions'
 
-export default function Home() {
-  // const moviesData = getAllMovies()
-  // console.log(moviesData)
+export default async function Home() {
+  const data: MovieType[] = await getAllMovies()
+
   return (
     <main>
-      <div>Here comes page components</div>
-      <DataTable />
+      <MoviesForm data={data} />
     </main>
   )
 }

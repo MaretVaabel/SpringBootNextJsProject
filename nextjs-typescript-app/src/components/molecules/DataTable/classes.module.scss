@@ -1,13 +1,5 @@
 @import 'styles/variables';
 
-.title {
-  margin: 24 16;
-}
-
-.tableWrapper {
-  overflow-x: auto;
-  white-space: nowrap;
-}
 .dataTable {
   overflow-x: auto;
   width: 100%;
@@ -21,13 +13,14 @@
     padding: 10px 16px;
     height: 48px;
     max-height: 48px;
-    width: 100px;
   }
 
   th {
     border-bottom: 1px solid $color-border-secondary;
     vertical-align: middle;
-    color: $color-text;
+    color: $color-dark;
+    background-color: $color-background-purple;
+    text-transform: capitalize;
   }
   td {
     border-bottom: 1px solid $color-border;

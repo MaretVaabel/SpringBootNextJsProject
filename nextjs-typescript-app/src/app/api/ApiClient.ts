@@ -73,6 +73,29 @@ class ApiClient {
       url,
       params,
     })
+  post = async (url: string, data = {}, config = {}) =>
+    this.request({
+      ...config,
+      method: 'post',
+      url,
+      data,
+    })
+
+  put = async (url: string, data = {}, config = {}) =>
+    this.request({
+      ...config,
+      method: 'put',
+      url,
+      data,
+    })
+
+  delete = async (url: string, data = {}, config = {}) =>
+    this.request({
+      ...config,
+      method: 'delete',
+      url,
+      data,
+    })
 }
 
 export default ApiClient

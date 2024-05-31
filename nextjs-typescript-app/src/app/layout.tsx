@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import StoreProvider from 'components/atoms/StoreProvider/StoreProvider'
 import 'styles/global.scss'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,9 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* <Header  /> */}
-        <StoreProvider>
-          <div className="mainContainer">{children}</div>
-        </StoreProvider>
+        <div className="mainContainer">{children}</div>
         {/* <Footer /> */}
       </body>
     </html>
