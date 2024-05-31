@@ -13,10 +13,8 @@ export enum AppearanceTypes {
   Icon = 'icon',
 }
 export enum SizeTypes {
-  L = 'l',
   M = 'm',
   S = 's',
-  XS = 'xs',
 }
 
 export type IconProps = {

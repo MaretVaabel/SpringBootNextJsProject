@@ -1,0 +1,7 @@
+.buttonContainer {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 40px;
+  align-items: center;
+  justify-content: end;
+}

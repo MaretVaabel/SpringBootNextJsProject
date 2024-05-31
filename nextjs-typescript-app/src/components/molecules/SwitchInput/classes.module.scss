@@ -1,0 +1,50 @@
+@import 'styles/variables';
+
+.switch {
+  display: grid;
+  grid-template-columns: max-content 90px;
+  grid-gap: 20px;
+  align-items: center;
+
+  input[type='checkbox'] {
+    display: none;
+
+    &:checked + label {
+      background-color: $color-primary;
+    }
+
+    &:checked + label:after {
+      left: 27px;
+    }
+  }
+
+  label {
+    transition: all 200ms ease-in-out;
+    display: inline-block;
+    position: relative;
+    height: 25px;
+    width: 50px;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: $color-disabled;
+
+    &:after {
+      transition: all 200ms ease-in-out;
+      content: ' ';
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background-color: $color-white;
+      top: 2px;
+      left: 3px;
+      right: auto;
+      box-shadow: 1px 1px 1px $color-disabled;
+    }
+  }
+
+  label:hover,
+  label:focus {
+    outline: 2px solid $color-input;
+  }
+}

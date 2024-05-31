@@ -1,0 +1,26 @@
+@import 'styles/variables';
+
+.paginationContainer {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: center;
+  justify-content: center;
+  grid-gap: 10px;
+  padding: 20px;
+}
+.button {
+  background-color: transparent;
+  color: $color-text-gray;
+  width: 60px;
+  height: 40px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 2px solid $color-background-purple;
+  }
+}
+
+.pageNumbers {
+  color: $color-text-gray;
+}

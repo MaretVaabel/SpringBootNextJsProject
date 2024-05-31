@@ -1,7 +1,12 @@
-export default function Home() {
+import MoviesForm from 'components/molecules/MoviesForm/MoviesForm'
+import { MovieType, getAllMovies } from './api/actions'
+
+export default async function Home() {
+  const data: MovieType[] = await getAllMovies()
+
   return (
     <main>
-      <div>Here comes page components</div>
+      <MoviesForm data={data} />
     </main>
   )
 }

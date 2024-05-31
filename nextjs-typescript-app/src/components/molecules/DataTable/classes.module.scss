@@ -1,0 +1,39 @@
+@import 'styles/variables';
+
+.dataTable {
+  overflow-x: auto;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0;
+  display: table;
+  font-size: 16px;
+
+  th,
+  td {
+    padding: 10px 16px;
+    height: 48px;
+    max-height: 48px;
+  }
+
+  th {
+    border-bottom: 1px solid $color-border-secondary;
+    vertical-align: middle;
+    color: $color-dark;
+    background-color: $color-background-purple;
+    text-transform: capitalize;
+  }
+  td {
+    border-bottom: 1px solid $color-border;
+    vertical-align: middle;
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 1px solid $color-border-secondary;
+        }
+      }
+    }
+  }
+}
