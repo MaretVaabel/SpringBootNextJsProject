@@ -1,3 +1,18 @@
+.moviesContainer {
+  display: grid;
+  grid-template-columns: 1ft 1tr;
+  grid-gap: 30px;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+  }
+}
+.addButton {
+  justify-self: end;
+  justify-items: center;
+}
+
 .buttonContainer {
   display: grid;
   grid-template-columns: max-content max-content;
