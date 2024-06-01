@@ -35,9 +35,8 @@ const TablePagination: FC<PaginationTYpes> = ({
         ariaLabel={'prev_page'}
         onClick={() => prevPage()}
         className={classes.button}
-      >
-        {'Prev'}
-      </Button>
+        label={'Prev'}
+      />
       <div className={classes.pageNumbers}>
         <span>{currentPage}</span>
         <span>/</span>
@@ -49,9 +48,8 @@ const TablePagination: FC<PaginationTYpes> = ({
         ariaLabel={'next_page'}
         onClick={() => nextPage()}
         className={classes.button}
-      >
-        {'Next'}
-      </Button>
+        label={'Next'}
+      />
     </div>
   )
 }

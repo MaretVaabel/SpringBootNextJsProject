@@ -52,8 +52,17 @@ const MoviesForm: FC<MoviesFormType> = ({ data }) => {
     }
   }
   return (
-    <Root onSubmit={handleSubmit(onSubmit)}>
-      <Container>
+    <Container className={classes.moviesContainer}>
+      <h1>{'Movies'}</h1>
+      <Button
+        ariaLabel={'delete'}
+        size={SizeTypes.S}
+        appearance={AppearanceTypes.Primary}
+        className={classes.addButton}
+        href={'/NewMovie'}
+        label={'Add new movie'}
+      />
+      <Root onSubmit={handleSubmit(onSubmit)}>
         <DataTable control={control} data={moviesData} />
         <TablePagination
           numberOfPages={numberOfPages}
@@ -69,12 +78,11 @@ const MoviesForm: FC<MoviesFormType> = ({ data }) => {
             appearance={AppearanceTypes.Primary}
             className={classes.button}
             type="submit"
-          >
-            {'Delete'}
-          </Button>
+            label={'Delete'}
+          />
         </div>
-      </Container>
-    </Root>
+      </Root>
+    </Container>
   )
 }
 

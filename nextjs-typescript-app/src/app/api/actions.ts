@@ -54,3 +54,18 @@ export async function deleteMovieById(id: number) {
   //TODO: chance the cached data and revalidate
   window.location.reload()
 }
+
+export interface MoviePayload {
+  name: string
+  category: string
+  rate?: number
+  year?: number
+  state: string
+}
+export async function addMovie(payload: MoviePayload) {
+  const response = await apiClient.post(endpoints.ADD, payload)
+
+  //TODO: chance the cached data and revalidate
+  window.location.reload()
+  return response
+}

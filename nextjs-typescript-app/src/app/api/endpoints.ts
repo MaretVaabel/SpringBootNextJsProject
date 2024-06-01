@@ -4,4 +4,5 @@ export const endpoints = {
   MOVIES: `${API_BASE_URL}movies`,
   UPDATE: `${API_BASE_URL}movies/update`,
   DELETE: `${API_BASE_URL}movies/delete`,
+  ADD: `${API_BASE_URL}movies/add`,
 }

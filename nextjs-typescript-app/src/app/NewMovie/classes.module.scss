@@ -1,0 +1,13 @@
+.moviesContainer {
+  display: grid;
+  grid-gap: 30px;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 500;
+  }
+}
+
+.button {
+  justify-items: center;
+}

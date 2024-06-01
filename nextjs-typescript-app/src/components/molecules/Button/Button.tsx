@@ -28,6 +28,7 @@ export interface ButtonProps extends BaseButtonProps {
   hidden?: boolean
   className?: string
   icon?: string
+  label?: string
 }
 
 export const Icon: FC<IconProps> = ({ icon: IconComponent, ariaLabel }) => {
@@ -52,6 +53,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       icon,
       hidden,
       className,
+      label,
       children,
       disabled,
       ...rest
@@ -76,8 +78,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
         aria-label={ariaLabel}
       >
         <Icon icon={icon} ariaLabel={ariaLabel} />
-        <span hidden={!children} className={classes.buttonText}>
-          {children}
+        <span hidden={!label} className={classes.buttonText}>
+          {label}
         </span>
       </BaseButton>
     )
