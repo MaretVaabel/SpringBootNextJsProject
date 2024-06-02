@@ -36,13 +36,12 @@
   border: 1px solid $color-background-purple;
 
   .selectedValue {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: $color-text;
+    color: $color-dark;
     margin-left: 8px;
     opacity: 0.9;
-    // color: $color-text-dark;
   }
 
   &:hover,

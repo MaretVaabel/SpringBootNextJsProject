@@ -1,0 +1,29 @@
+@import 'styles/variables';
+
+.headingWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.iconButton {
+  padding-right: 4px;
+  width: max-content;
+
+  svg {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  svg g path,
+  svg path {
+    fill: $color-input;
+    fill-opacity: 1;
+  }
+}
+
+.selectInput p {
+  width: 130px;
+  color: $color-dark;
+  margin-left: 0;
+}

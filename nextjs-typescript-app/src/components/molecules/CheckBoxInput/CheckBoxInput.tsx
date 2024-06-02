@@ -5,10 +5,7 @@ import { FormValues } from 'components/molecules/MoviesForm/MoviesForm'
 import { includes, keys, pickBy } from 'lodash'
 
 interface CheckBoxInputType {
-  name: string
   id: string
-  label?: string
-  value?: boolean
   control: Control<FormValues>
 }
 
@@ -16,16 +13,22 @@ const CheckBoxInput: FC<CheckBoxInputType> = ({ id, control }) => {
   const selectedValues = useWatch({
     control,
   })
-  const selectedIds = keys(pickBy(selectedValues))
-  //TODO: Fix a bug about selecting movies in multiple pages
+  const selectedIds = keys(pickBy(selectedValues, 'isChecked'))
+
   return (
     <Controller
-      name={id}
+      name={`${id}.isChecked`}
       control={control}
       render={({ field }) => {
         return (
           <div className={classes.checkbox}>
             <input
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  field.onChange(!field.value)
+                }
+              }}
               type="checkbox"
               checked={includes(selectedIds, id)}
               aria-label={'delete'}

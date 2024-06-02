@@ -15,6 +15,7 @@ export interface TextInputProps
   subText?: string
   isLabelText?: boolean
   value?: string | number | null
+  isSearch?: boolean
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -29,6 +30,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       disabled,
       hidden,
       subText,
+      isSearch,
       ...rest
     } = props
     const wrapperRef = useRef(null)
@@ -49,6 +51,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         className={classNames(
           classes.container,
           error && classes.error,
+          isSearch && classes.searchInputContainer,
           className
         )}
       >

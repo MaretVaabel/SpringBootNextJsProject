@@ -1,5 +1,5 @@
 'use client'
-import React, { FC, useState } from 'react'
+import React, { FC, Suspense, useMemo, useState } from 'react'
 import classes from './classes.module.scss'
 import { Root } from '@radix-ui/react-form'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -9,32 +9,59 @@ import Button, {
   SizeTypes,
   AppearanceTypes,
 } from 'components/molecules/Button/Button'
-import { MovieType, deleteMovieById } from 'app/api/actions'
+import { MovieState, MovieType, deleteMovieById } from 'app/api/actions'
 import TablePagination from 'components/molecules/TablePagination/TablePagination'
-import { keys, map, pickBy, size, slice, toNumber } from 'lodash'
+import { keys, map, pickBy, reduce, size, slice, toNumber } from 'lodash'
+import TextInput from '../TextInput/TextInput'
+import SearchInput from '../SearchInput/SearchInput'
+import Loader from 'components/atoms/Loader/Loader'
 
 interface MoviesFormType {
   data: MovieType[]
+  query: string
+  currentPage: number
 }
 export type FormValues = {
-  [key: string]: string
+  [key: string]: {
+    isChecked: string
+    isActive: string
+  }
 }
 
-const MoviesForm: FC<MoviesFormType> = ({ data }) => {
-  const [currentPage, setCurrentPage] = useState(1)
+const MoviesForm: FC<MoviesFormType> = ({ data, query, currentPage }) => {
   const nbPerPage = 5
   const lastIndex = currentPage * nbPerPage
   const startIndex = lastIndex - nbPerPage
   const numberOfPages = Math.ceil(size(data) / nbPerPage)
   const moviesData = slice(data, startIndex, lastIndex)
 
+  const defaultValues = useMemo(
+    () =>
+      reduce(
+        data,
+        (result, { id, state }) => {
+          if (!id) return result
+
+          return {
+            ...result,
+            [id]: {
+              isChecked: false,
+              isActive: state === MovieState.Activated,
+            },
+          }
+        },
+        {}
+      ),
+    [data]
+  )
+
   const { control, handleSubmit, watch } = useForm<FormValues>({
-    mode: 'onChange',
+    mode: 'onSubmit',
+    defaultValues: defaultValues,
   })
 
   const onSubmit: SubmitHandler<FormValues> = (value) => {
     const moviesIds = keys(pickBy(value))
-
     try {
       //TODO: do modal for this
       const res = confirm(
@@ -55,33 +82,34 @@ const MoviesForm: FC<MoviesFormType> = ({ data }) => {
     <Container className={classes.moviesContainer}>
       <h1>{'Movies'}</h1>
       <Button
-        ariaLabel={'delete'}
+        ariaLabel={'addNew'}
         size={SizeTypes.S}
         appearance={AppearanceTypes.Primary}
         className={classes.addButton}
         href={'/NewMovie'}
         label={'Add new movie'}
       />
-      <Root onSubmit={handleSubmit(onSubmit)}>
-        <DataTable control={control} data={moviesData} />
-        <TablePagination
-          numberOfPages={numberOfPages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
-
-        <div className={classes.buttonContainer}>
-          <span>{'Delete selected Movies'}</span>
-          <Button
-            ariaLabel={'delete'}
-            size={SizeTypes.S}
-            appearance={AppearanceTypes.Primary}
-            className={classes.button}
-            type="submit"
-            label={'Delete'}
-          />
-        </div>
+      <SearchInput placeholder={'Search by name and id'} />
+      <Root id="movies" onSubmit={handleSubmit(onSubmit)}>
+        <Suspense key={query + currentPage} fallback={<Loader />}>
+          <DataTable control={control} data={moviesData} />
+        </Suspense>
       </Root>
+
+      <TablePagination numberOfPages={numberOfPages} />
+
+      <div className={classes.buttonContainer}>
+        <span>{'Delete selected Movies'}</span>
+        <Button
+          form={'movies'}
+          ariaLabel={'delete'}
+          size={SizeTypes.S}
+          appearance={AppearanceTypes.Primary}
+          className={classes.button}
+          type="submit"
+          label={'Delete'}
+        />
+      </div>
     </Container>
   )
 }

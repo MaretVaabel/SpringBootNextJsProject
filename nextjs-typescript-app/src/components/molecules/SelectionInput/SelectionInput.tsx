@@ -28,7 +28,7 @@ export interface SelectionControlsInputProps {
   ariaLabel: string
   value?: string | number
   options: DropDownOptions[]
-  onChange: (value: string | number) => void
+  onChange: (value: string) => void
   disabled?: boolean
   placeholder?: string
   className?: string

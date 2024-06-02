@@ -14,6 +14,7 @@ export enum MovieCategories {
   Mystery = 'mystery',
   Romance = 'romance',
   Thriller = 'thriller',
+  Documentary = 'documentary',
 }
 export interface MovieType {
   id: number
@@ -36,16 +37,12 @@ export async function updateMovieState({
   state,
   id,
 }: {
-  state: boolean
+  state: string
   id: number
 }) {
-  const stateLabel = state ? 'activated' : 'deactivated'
   const response = await apiClient.put(`${endpoints.UPDATE}/${id}`, {
-    state: stateLabel,
+    state,
   })
-
-  //TODO: chance the cached data and revalidate
-  window.location.reload()
 }
 
 export async function deleteMovieById(id: number) {
