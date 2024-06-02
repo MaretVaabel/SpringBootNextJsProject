@@ -60,7 +60,8 @@ const MoviesForm: FC<MoviesFormType> = ({ data, query, currentPage }) => {
   })
 
   const onSubmit: SubmitHandler<FormValues> = (value) => {
-    const moviesIds = keys(pickBy(value))
+    const moviesIds = keys(pickBy(value, 'isChecked'))
+
     try {
       //TODO: do modal for this
       const res = confirm(
