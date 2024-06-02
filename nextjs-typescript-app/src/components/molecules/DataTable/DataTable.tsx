@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import classes from './classes.module.scss'
 import { keys, map, toString } from 'lodash'
-import { MovieState, MovieType } from 'app/api/actions'
+import { MovieType } from 'app/api/actions'
 import { Control } from 'react-hook-form'
-import MoviesStateToggle from 'components/molecules/MoviesStateToggle/MoviesStateToggle'
 import CheckBoxInput from 'components/molecules/CheckBoxInput/CheckBoxInput'
 import { FormValues } from 'components/molecules/MoviesForm/MoviesForm'
+import SwitchInput from 'components/molecules/SwitchInput/SwitchInput'
+import TableHeaderGroup from '../TableHeaderGroup/TableHeaderGroup'
 
 interface DataTablePropTypes {
   control: Control<FormValues>
@@ -17,22 +18,12 @@ const DataTable: FC<DataTablePropTypes> = ({ control, data }) => {
 
   return (
     <table className={classes.dataTable}>
-      <thead>
-        <tr>
-          {map(headings, (name, key) => (
-            <th key={key}>{name}</th>
-          ))}
-        </tr>
-      </thead>
+      <TableHeaderGroup headings={headings} />
       <tbody>
         {map(data, (value, key) => (
           <tr key={key}>
             <td>
-              <CheckBoxInput
-                name={value.name}
-                id={toString(value.id)}
-                control={control}
-              />
+              <CheckBoxInput id={toString(value.id)} control={control} />
             </td>
             <td>{value.id}</td>
             <td>{value.name}</td>
@@ -40,11 +31,10 @@ const DataTable: FC<DataTablePropTypes> = ({ control, data }) => {
             <td>{value.rate}</td>
             <td>{value.year}</td>
             <td>
-              <MoviesStateToggle
-                id={`${value.id}-${value.name}`}
-                name={`${value.id}-${value.name}`}
-                label={value.state}
-                value={value.state === MovieState.Activated}
+              <SwitchInput
+                control={control}
+                id={value.id}
+                ariaLabel={value.name}
               />
             </td>
           </tr>

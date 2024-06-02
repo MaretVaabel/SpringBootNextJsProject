@@ -46,7 +46,7 @@ const interceptor = (error: ErrorInterface) => {
       if (response) {
         return Promise.reject(response)
       }
-      // eslint-disable-next-line prefer-promise-reject-errors
+       
       return Promise.reject({
         status: 0,
         data: '',

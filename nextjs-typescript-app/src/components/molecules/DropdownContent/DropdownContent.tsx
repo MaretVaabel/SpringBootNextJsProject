@@ -1,6 +1,6 @@
 import { Dispatch, RefObject, SetStateAction, forwardRef, useRef } from 'react'
 import classNames from 'classnames'
-import { map, isEmpty } from 'lodash'
+import { map, isEmpty, toString } from 'lodash'
 import { SelectionControlsInputProps } from 'components/molecules/SelectionInput/SelectionInput'
 import { useClickAway } from 'ahooks'
 import classes from './classes.module.scss'
@@ -50,7 +50,7 @@ const DropdownContent = forwardRef<
     }
   }, [typedRef, wrapperRef])
 
-  const handleSingleSelect = (selectedOption: string | number) => {
+  const handleSingleSelect = (selectedOption: string) => {
     onChange(selectedOption ? selectedOption : '')
 
     if (setIsOpen) {
@@ -71,7 +71,7 @@ const DropdownContent = forwardRef<
                 className={classes.option}
                 appearance={AppearanceTypes.Text}
                 size={SizeTypes.S}
-                onClick={() => handleSingleSelect(option?.value)}
+                onClick={() => handleSingleSelect(toString(option?.value))}
                 autoFocus={isOpen && option.value === value}
                 ariaLabel={'option'}
                 label={option?.label}
