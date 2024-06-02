@@ -76,7 +76,6 @@ const HeaderItem: FC<HeaderItemProps> = ({
     }
   }
 
-  console.log(name)
   return (
     <div className={classes.headingWrapper}>
       <Button
