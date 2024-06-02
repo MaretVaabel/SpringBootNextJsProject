@@ -1,5 +1,5 @@
 'use client'
-import React, { FC, Suspense, useMemo, useState } from 'react'
+import React, { FC, Suspense, useMemo } from 'react'
 import classes from './classes.module.scss'
 import { Root } from '@radix-ui/react-form'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -12,7 +12,6 @@ import Button, {
 import { MovieState, MovieType, deleteMovieById } from 'app/api/actions'
 import TablePagination from 'components/molecules/TablePagination/TablePagination'
 import { keys, map, pickBy, reduce, size, slice, toNumber } from 'lodash'
-import TextInput from '../TextInput/TextInput'
 import SearchInput from '../SearchInput/SearchInput'
 import Loader from 'components/atoms/Loader/Loader'
 
@@ -55,7 +54,7 @@ const MoviesForm: FC<MoviesFormType> = ({ data, query, currentPage }) => {
     [data]
   )
 
-  const { control, handleSubmit, watch } = useForm<FormValues>({
+  const { control, handleSubmit } = useForm<FormValues>({
     mode: 'onSubmit',
     defaultValues: defaultValues,
   })
@@ -67,10 +66,10 @@ const MoviesForm: FC<MoviesFormType> = ({ data, query, currentPage }) => {
       const res = confirm(
         `Are you sure you want to delete ${size(moviesIds)} movies!`
       )
-      if (!!res) {
+      if (res) {
         Promise.all([
           map(moviesIds, (id) => deleteMovieById(toNumber(id))),
-        ]).then((values) => {})
+        ]).then()
       } else {
         window.location.reload()
       }

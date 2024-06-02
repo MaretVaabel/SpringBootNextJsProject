@@ -43,6 +43,7 @@ export async function updateMovieState({
   const response = await apiClient.put(`${endpoints.UPDATE}/${id}`, {
     state,
   })
+  return response
 }
 
 export async function deleteMovieById(id: number) {
@@ -50,6 +51,7 @@ export async function deleteMovieById(id: number) {
 
   //TODO: chance the cached data and revalidate
   window.location.reload()
+  return response
 }
 
 export interface MoviePayload {

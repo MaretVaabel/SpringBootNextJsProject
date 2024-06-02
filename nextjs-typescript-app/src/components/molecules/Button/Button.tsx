@@ -54,7 +54,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       hidden,
       className,
       label,
-      children,
       disabled,
       ...rest
     },
